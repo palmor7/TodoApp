@@ -7,7 +7,7 @@ var {User} = require('./model/user');
 var {Todo} = require('./model/todo');
 
 var app = express();
-
+var port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
@@ -49,10 +49,10 @@ app.get('/todos/:id', (req, res)=>{
 		res.status(400).send();
 	});
 });
-app.listen( 3000, (err, res)=>{
+app.listen(port, (err, res)=>{
 	if(err){
 		console.log('Unable to connent to Server', err);
 	}else{
-		console.log('Listen to port 3000..');
+		console.log(`Listen to port ${port}..`);
 	}
 });
