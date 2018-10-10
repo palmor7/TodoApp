@@ -133,6 +133,14 @@ app.post('/users/login', (req, res)=>{
 	});
 });
 
+app.delete('/users/me/token', authenticate, (req, res)=>{
+	req.user.deleteToken(req.token).then(()=>{
+		res.status(200).send();
+	}, ()=>{
+		res.status(401).send();
+	});
+});
+
 app.listen(port, (err, res)=>{
 	if(err){
 		console.log('Unable to connent to Server', err);
