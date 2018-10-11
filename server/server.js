@@ -8,6 +8,7 @@ var {User} = require('./model/user');
 var {Todo} = require('./model/todo');
 var {authenticate} = require('./middleware/authenticate');
 
+
 var app = express();
 var port = process.env.PORT || 3000;
 
@@ -15,7 +16,7 @@ app.use(bodyParser.json());
 
 
 app.post('/todos', authenticate, (req, res)=>{
-	console.log(req.body);
+	
 	var todo =new Todo( {
 		text: req.body.text,
 		_creator: req.user._id
